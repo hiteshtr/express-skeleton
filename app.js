@@ -34,7 +34,7 @@ app.use(express.cookieParser('your secret here'));
 app.use(express.session({
 		secret: 'your secret here',
 		store: new MongoStore({
-			db: 'mongodb://localhost/mydb'
+			url: 'mongodb://localhost/mydb'
 		})
 	}));
 

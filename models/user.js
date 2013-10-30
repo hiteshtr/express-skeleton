@@ -1,4 +1,4 @@
-Var mongoose = require('mongoose')
+var mongoose = require('mongoose')
       ,Schema = mongoose.Schema
       userSchema = new Schema( {
           username: String,
