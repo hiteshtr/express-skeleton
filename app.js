@@ -14,7 +14,7 @@ var MongoStore = require('connect-mongo')(express);
 
 // database connection
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mydb');
+mongoose.connect('mongodb://localhost/test');
 
 var app = express();
 
@@ -41,7 +41,7 @@ app.use(express.session({
 //Cross-Site Request Forgery (CSRF) Protection
 app.use(express.csrf());
 app.use(function (req, res, next) {
-res.locals.csrftoken = req.session._csrf;
+res.locals.csrftoken = req.csrfToken();
 next();
 });
 
@@ -66,4 +66,6 @@ fs.readdirSync('./controllers').forEach(function (file) {
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+  //process.setuid(config.uid);
+  //process.setgid(config.gid);
 });
