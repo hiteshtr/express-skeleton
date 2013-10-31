@@ -1,8 +1,8 @@
 //Module Dependency
 
 var express = require('express');
-//var http = require('http');
-//var path = require('path');
+var http = require('http');
+var path = require('path');
 //var fs = require('fs');
 var helmet = require('helmet');
 var MongoStore = require('connect-mongo')(express);
@@ -19,7 +19,7 @@ module.exports = function (app, config) {
 		filter: function (req, res) {
 			return /json|text|javascript|css/.test(res.getHeader('Content-Type'));
 		},
-		level: 9;
+		level: 9
 	}));
 
 	// all environments
@@ -97,8 +97,7 @@ module.exports = function (app, config) {
         url: req.originalUrl,
         error: 'Not found'
       })
-    })
-  });
+    });
 
   // development env config
   app.configure('development', function () {
