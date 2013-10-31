@@ -1,9 +1,7 @@
 //Module Dependency
 
 var express = require('express');
-var http = require('http');
 var path = require('path');
-//var fs = require('fs');
 var helmet = require('helmet');
 var MongoStore = require('connect-mongo')(express);
 var flash = require('connect-flash');
@@ -68,6 +66,8 @@ module.exports = function (app, config) {
 		next();
 	});
 
+	//Security header middleware from helmet
+	helmet.defaults(app);
 	// routes should be at the last
     app.use(app.router);
 
